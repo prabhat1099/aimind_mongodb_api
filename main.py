@@ -46,11 +46,6 @@ async def get_all_data_mycoll():
     # Convert _id (ObjectId) to string
     for doc in documents:
         doc["_id"] = str(doc["_id"])
-    df = pd.DataFrame(documents)
-    df.drop("_id",axis=1,inplace=True)
-    df.drop_duplicates(subset = ['name'],inplace=True)
-    df.to_csv("customers.csv", index= False)
-    
     return {"message": "All records fetched successfully",
             "data": documents}    
 
